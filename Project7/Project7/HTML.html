@@ -5,7 +5,7 @@
     <!--The viewport meta tag is used to improve the presentation and behavior of the samples
       on iOS devices-->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-    <title>Identify with Popup</title>
+    <title>Dunham Project 7</title>
 
     <link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
     <style>
@@ -67,8 +67,8 @@
 
           identifyParams = new IdentifyParameters();
           identifyParams.tolerance = 3;
-          identifyParams.returnGeometry = true;
-          identifyParams.layerIds = [0, 2];
+          identifyParams.returnGeometry = false;
+          identifyParams.layerIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
           identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
           identifyParams.width = map.width;
           identifyParams.height = map.height;
@@ -90,14 +90,56 @@
                 feature.attributes.layerName = layerName;
                 if (layerName === 'Service Connection') {
                   var serviceTemplate = new InfoTemplate("",
-                    "ID: ${FACILITYID} <br/> Install Date: ${INSTALLDATE} <br/> Description: ${LOCDESC}");
+                    "Facility ID: ${Facility Identifier} <br/> Service Type: ${Service Type} <br/> Location ID: ${Location Identifier}");
                   feature.setInfoTemplate(serviceTemplate);
                 }
-                else if (layerName === 'Building Footprints') {
+                else if (layerName === 'Hydrant') {
                   console.log(feature.attributes.PARCELID);
-                  var buildingFootprintTemplate = new InfoTemplate("",
-                    "Parcel ID: ${PARCELID}");
-                  feature.setInfoTemplate(buildingFootprintTemplate);
+                  var hydrantTemplate = new InfoTemplate("",
+                    "Facility ID: ${Facility Identifier} <br/> Last Service Date: ${Last Service Date} <br/> Flow Rate(GPM): ${Flow Rate (GPM)}");
+                  feature.setInfoTemplate(hydrantTemplate);
+                }
+                else if (layerName === 'System Valve') {
+                    console.log(feature.attributes.PARCELID);
+                    var systemTemplate = new InfoTemplate("",
+                      "Facility ID: ${Facility Identifier} <br/> Location Description: ${Location Description} <br/> Currently Open: ${Currently Open}");
+                    feature.setInfoTemplate(systemTemplate);
+                }
+                else if (layerName === 'Hydrant Valve') {
+                    console.log(feature.attributes.PARCELID);
+                    var hydrantValveTemplate = new InfoTemplate("",
+                      "Facility ID: ${Facility Identifier} <br/> Rotation: ${Rotation} <br/> Currently Open: ${Currently Open}");
+                    feature.setInfoTemplate(hydrantValveTemplate);
+                }
+                else if (layerName === 'Control Valve') {
+                    console.log(feature.attributes.PARCELID);
+                    var controlValveTemplate = new InfoTemplate("",
+                      "Facility ID: ${Facility Identifier} <br/> Valve Type: ${Valve Type} <br/> Diameter: ${Diameter}");
+                    feature.setInfoTemplate(controlValveTemplate);
+                }
+                else if (layerName === 'Curb Stop Valve') {
+                    console.log(feature.attributes.PARCELID);
+                    var curbStopTemplate = new InfoTemplate("",
+                      "Facility ID: ${Facility Identifier} <br/> Valve Type: ${Valve Type} <br/> Location Description: ${Location Description}");
+                    feature.setInfoTemplate(curbStopTemplate);
+                }
+                else if (layerName === 'Network Structures') {
+                    console.log(feature.attributes.PARCELID);
+                    var networkTemplate = new InfoTemplate("",
+                      "Facility ID: ${Facility Identifier} <br/> Structure Type: ${Structure Type} <br/> Location Description: ${Location Description}");
+                    feature.setInfoTemplate(networkTemplate);
+                }
+                else if (layerName === 'Main') {
+                    console.log(feature.attributes.PARCELID);
+                    var mainTemplate = new InfoTemplate("",
+                      "Facility ID: ${Facility Identifier} <br/> Material: ${Material} <br/> Diameter: ${Diameter}");
+                    feature.setInfoTemplate(mainTemplate);
+                }
+                else if (layerName === 'Lateral') {
+                    console.log(feature.attributes.PARCELID);
+                    var lateralTemplate = new InfoTemplate("",
+                      "Facility ID: ${Facility Identifier} <br/> Material: ${Material} <br/> Diameter: ${Diameter} <br/> Line Type: ${Line Type} ");
+                    feature.setInfoTemplate(lateralTemplate);
                 }
                 return feature;
               });
