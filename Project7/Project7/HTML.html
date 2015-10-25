@@ -57,14 +57,13 @@
 
         map.on("load", mapReady);
 
-        var parcelsURL = "http://arcgis-arcserver-2000371287.us-west-2.elb.amazonaws.com/arcgis/rest/services/WaterDistributionNetwork/MapServer";
-        map.addLayer(new ArcGISDynamicMapServiceLayer(parcelsURL,
-          { opacity: 0.55 }));
+        var waterURL = "http://arcgis-arcserver-2000371287.us-west-2.elb.amazonaws.com/arcgis/rest/services/WaterDistributionNetwork/MapServer";
+        map.addLayer(new ArcGISDynamicMapServiceLayer(waterURL));
 
         function mapReady () {
           map.on("click", executeIdentifyTask);
           //create identify tasks and setup parameters
-          identifyTask = new IdentifyTask(parcelsURL);
+          identifyTask = new IdentifyTask(waterURL);
 
           identifyParams = new IdentifyParameters();
           identifyParams.tolerance = 3;
@@ -89,10 +88,10 @@
                 var layerName = result.layerName;
 
                 feature.attributes.layerName = layerName;
-                if (layerName === 'Tax Parcels') {
-                  var taxParcelTemplate = new InfoTemplate("",
-                    "${Postal Address} <br/> Owner of record: ${First Owner Name}");
-                  feature.setInfoTemplate(taxParcelTemplate);
+                if (layerName === 'Service Connection') {
+                  var serviceTemplate = new InfoTemplate("",
+                    "ID: ${FACILITYID} <br/> Install Date: ${INSTALLDATE} <br/> Description: ${LOCDESC}");
+                  feature.setInfoTemplate(serviceTemplate);
                 }
                 else if (layerName === 'Building Footprints') {
                   console.log(feature.attributes.PARCELID);
