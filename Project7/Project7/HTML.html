@@ -27,9 +27,6 @@
             padding: 10px;
         }
 
-      
-
-
     </style>
 
     <script src="http://js.arcgis.com/3.14/"></script>
@@ -85,7 +82,6 @@
 
           identifyParams = new IdentifyParameters();
           identifyParams.tolerance = 5;
-          //identifyParams.returnGeometry = true;
           identifyParams.layerIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
           identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_VISIBLE;
           identifyParams.width = map.width;
@@ -161,40 +157,37 @@
 </head>
 
 <body>
-    <div class="="container">
-            <div class="jumbotron">
-                <h1>ESRI Server and API</h1>
-            </div>
-        
-        
-            <div id="map"></div>
-        
-        
+    <div class="container">
+        <div class="jumbotron">
+            <h1>ESRI Server and API</h1>
+        </div>
+        <div id="map"></div> 
         <div class="well">
             <p>
                 For my project, I navigated the entire workflow of building an ESRI map service and delivering that service over the web to an end-user. 
                 Utilizing the ESRI JavaScript API, the map service can be consumed by an end-user through an internet browser.
             </p>
             <p>
-                To kickoff the project, I used the ArcGIS Server Cloud Builder to set up an ESRI Server on a Amazon EC2 instance. 
-                After configuring remote access to the instance, ArcMAP was configured so that it could publish services directly to the server. 
+                To kickoff the project, I used the ArcGIS Server Cloud Builder to set up an ESRI Server on an Amazon EC2 instance. 
+                After configuring remote access to the instance, ArcMAP was set-up so that it could publish services directly to the server. 
                 Due to time constraints, I recycled a ESRI geodatabase that I had worked with before, which depicts a water distribution utility network. 
                 After styling, tiling, and configuring the geodatabase to meet my needs, I published the geodatabase to the server.
             </p>
             <p>
                 Once I had the map service up and running, I tested the service in the ESRI sandbox by putting a call into the service with one of the existing samples. 
                 This allowed me to find that my service was indeed running and behaving as I expected it to. With the service up and running, I turned my attention to coding the project. 
-                I set up a GitHub repository so that I could save the progress of my project after I had completed major logical components. The<a href ="https://github.com/dunhamspatial/lesson7">
-                    GitHub repository</a> can be seen here. I used the bootstrap framework to build the HTML grid for this project and used Microsoft Visual Studio for IDE.
+                I set up a GitHub repository so that I could save the progress of my project after I had completed major logical components. The 
+                <a href="https://github.com/dunhamspatial/Lesson7/commits/master">GitHub</a> repository can be seen here.
+                I used the bootstrap framework to build the HTML grid for this project and used Microsoft Visual Studio for the IDE.
             </p>
             <p>
-                    The use case for this project is a field utility worker who needs the ability to view data about a utility service in the field, but does not need the ability to edit or manipulate the data set.
-                 Utilizing Bootstrap was essential to meet this business need, due to the Bootstrap frame-work is responsive to the myriad of mobile clients available.
-                 Since this geodatabasecontained multiple layers, I decided that the identify tool would be the best tool for viewing the attribute data of the feature layers.
+                 The use case for this project is a field utility worker who needs the ability to view data about a utility service in the field, but does not need the ability to edit or manipulate the data set.
+                 Utilizing Bootstrap was essential to meet this business need, due to the fact that the Bootstrap frame-work is responsive to the myriad of mobile clients available.
+                 Since this geodatabase contained multiple layers, I decided that the identify tool would be the best tool for viewing the attribute data of the feature layers.
                  A query was used to identify each of the different layers and an info box was configured to display the pertinent attributes of the feature.
             </p>
             <p>
-                    The largest problem I faced with this project was founded in the original scope to the project.
+                 The largest problem I faced with this project was founded in the original scope to the project.
                  Initially, I had planned to have an editable feature class that the field personnel could use to make notes regarding field conditions.
                  After significant tinkering, I discovered that I was not going to be able to carry out this without first configuring an enterprisegeodatabase.
                  Due to time constraints and technical difficulties, I abandoned this part of the project.  
