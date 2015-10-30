@@ -165,13 +165,14 @@
         <div class="well">
             <p>
                 For my project, I navigated the entire workflow of building an ESRI map service and delivering that service over the web to an end-user. 
-                Utilizing the ESRI JavaScript API, the map service can be consumed by an end-user through an internet browser.
+                Utilizing the ESRI JavaScript API, this map service can be consumed by an end-user through an internet browser.
             </p>
             <p>
                 To kickoff the project, I used the ArcGIS Server Cloud Builder to set up an ESRI Server on an Amazon EC2 instance. 
                 After configuring remote access to the instance, ArcMAP was set-up so that it could publish services directly to the server. 
                 Due to time constraints, I recycled a ESRI geodatabase that I had worked with before, which depicts a water distribution utility network. 
-                After styling, tiling, and configuring the geodatabase to meet my needs, I published the geodatabase to the server.
+                After styling, tiling, and configuring the geodatabase to meet my needs, I published the
+                <a href="http://arcgis-arcserver-2000371287.us-west-2.elb.amazonaws.com/arcgis/rest/services/WaterDistributionNetwork/MapServer">map service</a> to the server.
             </p>
             <p>
                 Once I had the map service up and running, I tested the service in the ESRI sandbox by putting a call into the service with one of the existing samples. 
@@ -189,8 +190,14 @@
             <p>
                  The largest problem I faced with this project was founded in the original scope to the project.
                  Initially, I had planned to have an editable feature class that the field personnel could use to make notes regarding field conditions.
-                 After significant tinkering, I discovered that I was not going to be able to carry out this without first configuring an enterprisegeodatabase.
-                 Due to time constraints and technical difficulties, I abandoned this part of the project.  
+                 The ESRI AMI that was available was built on a SQL Server database and I initially had difficulties in connecting my enterprise
+                 geodatabase to the database. After I got that sorted, I published the <a href="http://arcgis-arcserver-2000371287.us-west-2.elb.amazonaws.com/arcgis/rest/services/WorkPoints/FeatureServer">feature service</a>
+                 to ArcServer. Once again, I returned to the ESRI Sandbox to test my service, but did not have the same luck this time. Utilizing the "Edit without editor widget"
+                 sample, I unsuccessfully tried to confirm that both my geometry and feature service were running. After much tinkering, I was unable to 
+                 call my feature service and display it in the map. 
+                 Due to time constraints and  many technical difficulties, I determined that I was not going to be able to deploy this functionality and
+                 abandoned this part of the project. Although, My final project is significantly less capable than I had envisioned when I began the project,
+                 the lessons I have learned throughout its undertaking have been numerous.
             </p>
         </div>
 
